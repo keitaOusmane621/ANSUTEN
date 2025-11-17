@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANSUTEN - Agence Nationale du Service Universel des Télécommunications et du Numérique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de couleurs et polices */
+        :root {
+            --primary-blue: #1e3c72;
+            --secondary-blue: #2a5298;
+            --light-blue: #f0f5ff;
+            --accent-orange: #ff6b35;
+            --dark-text: #333;
+            --light-text: #fff;
+            --gray-text: #6c757d;
+            --border-color: #e9ecef;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-blue);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-orange);
+            margin: 15px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-orange);
+            color: var(--light-text);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        /* Header */
+        .site-header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-header {
+            background-color: #fff;
+            color: #000;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .top-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .site-logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .site-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .contact-info-header {
+            display: flex;
+            gap: 30px;
+        }
+
+        .contact-item-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-icon {
+            color: var(--primary-blue);
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-label {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 2px;
+            color: #000;
+        }
+
+        .contact-value {
+            font-size: 14px;
+            color: #000;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background-color: #fff;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+
+        .main-nav li {
+            position: relative;
+        }
+
+        .main-nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .dropdown-menu a {
+            padding: 12px 16px;
+            font-weight: normal;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Section Hero */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--light-text);
+            padding: 100px 0;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: normal;
+            opacity: 0.9;
+        }
+
+        .hero-list {
+            margin: 30px 0;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-orange);
+        }
+
+        .list-number {
+            font-weight: bold;
+            margin-right: 10px;
+            color: var(--accent-orange);
+            min-width: 25px;
+        }
+
+        .list-text {
+            flex: 1;
+        }
+
+        .list-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Section Mission */
+        .mission-section {
+            background-color: var(--light-blue);
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mission-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--dark-text);
+        }
+
+        /* Section Rôle */
+        .role-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .role-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .role-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .role-feature {
+            background-color: var(--light-blue);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .role-feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        /* Section Mots-clés */
+        .keywords-section {
+            background-color: var(--light-blue);
+        }
+
+        .keywords-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .keywords-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .keyword-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .keyword-checkbox {
+            margin-right: 15px;
+            color: var(--accent-orange);
+            font-size: 1.2rem;
+        }
+
+        .keyword-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .cadre-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .cadre-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-align: center;
+        }
+
+        /* Section Institution */
+        .institution-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .institution-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .institution-list {
+            list-style-type: none;
+        }
+
+        .institution-list li {
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: var(--light-blue);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* Section Partenaires */
+        .partners-section {
+            background-color: var(--light-blue);
+        }
+
+        .partners-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .partner-logo {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 60px;
+        }
+
+        .recent-articles, .useful-links, .working-hours {
+            margin-bottom: 40px;
+        }
+
+        .subsection-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--accent-orange);
+            padding-bottom: 10px;
+        }
+
+        .article-item, .link-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .article-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .article-date {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+        }
+
+        .link-item a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .link-item a:hover {
+            color: var(--accent-orange);
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table td {
+            padding: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hours-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .mission-statement {
+            font-style: italic;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-blue);
+            color: var(--light-text);
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .contact-info-footer p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--secondary-blue);
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content, .role-content, .keywords-content, .partners-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .role-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-header .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .contact-info-header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .contact-item-header {
+                justify-content: center;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .site-brand {
+                justify-content: center;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .partners-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header class="site-header">
+        <div class="top-header">
+            <div class="container">
+                <div class="site-brand">
+                    <img src="logo.PNG" alt="ANSUTEN Logo" class="site-logo">
+                    <div class="site-name">ANSUTEN</div>
+                </div>
+                <div class="contact-info-header">
+                    <div class="contact-item-header">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <div class="contact-label">Contactez-nous</div>
+                            <div class="contact-value">(+224) 611-89-22-22</div>
+                        </div>
+                    </div>
+                    <div class="contact-item-header">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">contact@ansulen.gov.gn</div>
+                        </div>
+                    </div>
+                    <div class="contact-item-header">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <div class="contact-label">Localisation</div>
+                            <div class="contact-value">Immeuble ARPT 7ème étage Ratoma</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="index.html">ACCUEIL</a></li>
+                    <li class="dropdown">
+                        <a href="#">ANSUTEN +</a>
+                        <div class="dropdown-menu">
+                            <a href="presentation.html">Présentation</a>
+                            <a href="missions.html">Missions</a>
+                            <a href="organigramme.html">Organigramme</a>
+                            <a href="textes-reglementaires.html">Textes réglementaires</a>
+                        </div>
+                    </li>
+                    <li><a href="projets.html">PROJETS/PROGRAMMES</a></li>
+                    <li class="dropdown">
+                        <a href="#">APPEL D'OFFRES +</a>
+                        <div class="dropdown-menu">
+                            <a href="appels-en-cours.html">Appels en cours</a>
+                            <a href="archives-appels.html">Archives des appels</a>
+                            <a href="procedures.html">Procédures</a>
+                        </div>
+                    </li>
+                    <li><a href="partenariats.html">PARTENARIATS</a></li>
+                    <li class="dropdown">
+                        <a href="#">ACTUALITES +</a>
+                        <div class="dropdown-menu">
+                            <a href="news.html">Nouvelles</a>
+                            <a href="evenements.html">Événements</a>
+                            <a href="communiques.html">Communiqués</a>
+                        </div>
+                    </li>
+                    <li><a href="innovation.html">Innovation</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Section Hero -->
+    <section class="hero-banner">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>LE NUMÉRIQUE<br>AU SERVICE DE LA FORMATION</h1>
+                    
+                    <div class="hero-subtitle">
+                        1. Aperçu Nationale du Servicien Universitaire des Télécommunications et de Numérique
+                    </div>
+                    
+                    <div class="hero-list">
+                        <div class="list-item">
+                            <div class="list-number">•</div>
+                            <div class="list-text">
+                                <div class="list-title">Aperçu Nationale du Servicien Universitaire des Télécommunications et de Numérique</div>
+                            </div>
+                        </div>
+                        <div class="list-item">
+                            <div class="list-number">•</div>
+                            <div class="list-text">
+                                <div class="list-title">Bernstein_gr</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="presentation.html" class="btn">Découvrir nos services</a>
+                </div>
+                <div class="hero-image">
+                    <img src="etudiant.jpeg" alt="Numérique au service de la formation">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Mission -->
+    <section class="section mission-section">
+        <div class="container">
+            <h2 class="section-title">NOTRE MISSION</h2>
+            <div class="mission-content">
+                <p class="mission-text">
+                    L'ANSUTEN a pour mission, la mise en oeuvre des politiques, stratégies, programmes et projets en matière de service universel, de recherche et de formation dans le domaine des Télécommunications, des Technologies de l'Information et de la Communication (TICs).
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Rôle -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">NOTRE RÔLE</h2>
+            <div class="role-content">
+                <div>
+                    <p class="role-text">
+                        Faire des services de communications électroniques et de la poste un levier important de croissance économique et de réduction de la pauvreté, grâce au service numérique universel. Lutter contre la fracture numérique. Promouvoir l'alphabétisation numérique.
+                    </p>
+                    <div class="role-features">
+                        <div class="role-feature">
+                            <div class="feature-number">1</div>
+                            <div class="feature-title">Former et accompagner</div>
+                        </div>
+                        <div class="role-feature">
+                            <div class="feature-number">2</div>
+                            <div class="feature-title">Installer les infrastructures</div>
+                        </div>
+                        <div class="role-feature">
+                            <div class="feature-number">3</div>
+                            <div class="feature-title">Favoriser l'accessibilité</div>
+                        </div>
+                        <div class="role-feature">
+                            <div class="feature-number">4</div>
+                            <div class="feature-title">Financer des projets</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="role.jpeg" alt="Notre rôle">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Mots-clés -->
+    <section class="section keywords-section">
+        <div class="container">
+            <div class="keywords-content">
+                <div>
+                    <h2 class="section-title">RÉORGANISER - RELANCER - DÉVELOPPER</h2>
+                    <div class="keywords-list">
+                        <div class="keyword-item">
+                            <div class="keyword-checkbox"><i class="far fa-square"></i></div>
+                            <div class="keyword-text">RÉORGANISER</div>
+                        </div>
+                        <div class="keyword-item">
+                            <div class="keyword-checkbox"><i class="fas fa-check-square"></i></div>
+                            <div class="keyword-text">RELANCER</div>
+                        </div>
+                        <div class="keyword-item">
+                            <div class="keyword-checkbox"><i class="fas fa-check-square"></i></div>
+                            <div class="keyword-text">DÉVELOPPER</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="subsection-title">CADRE INSTITUTIONNEL</h3>
+                    <p class="cadre-text">
+                        L'ANSUTEN est placée sous la tutelle technique du Ministre des Postes, Télécommunications et de l'Économie Numérique et celle d'un système de travail.
+                    </p>
+                    <div class="cadre-number">1</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Institution -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">CADRE INSTITUTIONNEL</h2>
+            <div class="institution-content">
+                <p class="institution-text">
+                    L'ANSUTEN est placée sous la tutelle technique du Ministre des Postes, Télécommunications et de l'Économie Numérique et celle financière du Ministre de l'Économie, des Finances et du Plan. Son fonctionnement est régi par deux (2) textes :
+                </p>
+                <ul class="institution-list">
+                    <li>La loi L/2015/018/AN relatives aux Télécommunications et aux technologies de l'information en République de Guinée</li>
+                    <li>Le décret D/2022/0062 PRG/CNRD/SGG portant création, attributions, organisation et fonctionnement de l'Agence Nationale du Service Universel des Télécommunications et du Numérique "ANSUTEN"</li>
+                    <li>Décret D/2022/0281 PRG/CNRD/SGG Portant Nomination PCA et Membres du CA</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Partenaires -->
+    <section class="section partners-section">
+        <div class="container">
+            <h2 class="section-title">NOS PARTENAIRES</h2>
+            <div class="partners-content">
+                <div>
+                    <div class="recent-articles">
+                        <h3 class="subsection-title">Articles récents</h3>
+                        <div class="article-item">
+                            <div class="article-title">Réduction de la fracture numérique en Guinée : L'ANSUTEN et SFM en mission d'étude des zones blanches et grise</div>
+                            <div class="article-date">mar.21,2025</div>
+                        </div>
+                    </div>
+                    
+                    <div class="useful-links">
+                        <h3 class="subsection-title">Liens utiles</h3>
+                        <div class="link-item">
+                            <a href="#">Qui sommes - nous ?</a>
+                            <a href="#">Vision et Mission</a>
+                            <a href="#">Textes et Lois</a>
+                            <a href="#">Projets et Programmes</a>
+                            <a href="#">Offres d'emploi</a>
+                            <a href="#">Appels d'offres</a>
+                        </div>
+                    </div>
+                    
+                    <div class="working-hours">
+                        <h3 class="subsection-title">Jours de travail:</h3>
+                        <table class="hours-table">
+                            <tr>
+                                <td><strong>Lun – Ven</strong></td>
+                                <td>08h00 à 17h00</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sam & Dim</strong></td>
+                                <td>Fermé</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="mission-statement">
+                        L'ANSUTEN a pour mission, la mise en œuvre de la politique et des programmes, stratégies et projets du Gouvernement Guinéen, en matière d'innovation dans les Télécommunications/TIC et le numérique, d'accès et du Service Universal de télécommunications/TIC.
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="partners-grid">
+                        <div class="partner-logo">
+                            <img src="huawei.jpeg" alt="Partenaire 1">
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>ANSUTEN</h3>
+                    <p>Votre partenaire de confiance pour la sécurité et l'innovation numérique. Nous œuvrons pour un environnement numérique sécurisé et innovant.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="presentation.html">Présentation</a></li>
+                        <li><a href="projets.html">Projets/Programmes</a></li>
+                        <li><a href="appels-offres.html">Appels d'offres</a></li>
+                        <li><a href="actualites.html">Actualités</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <div class="contact-info-footer">
+                        <p><i class="fas fa-map-marker-alt"></i> Immeuble ARPT 7ème étage Ratoma</p>
+                        <p><i class="fas fa-phone"></i> (+224) 611-89-22-22</p>
+                        <p><i class="fas fa-envelope"></i> contact@ansulen.gov.gn</p>
+                        <p><i class="fas fa-clock"></i> Lun - Ven: 8h00 - 17h00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ANSUTEN - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script pour gérer le menu déroulant
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('mouseenter', function() {
+                    this.querySelector('.dropdown-menu').style.display = 'block';
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    this.querySelector('.dropdown-menu').style.display = 'none';
+                });
+            });
+            
+            // Fermer le menu déroulant en cliquant ailleurs
+            document.addEventListener('click', function(e) {
+                if (!e.target.matches('.dropdown a')) {
+                    const dropdowns = document.querySelectorAll('.dropdown-menu');
+                    dropdowns.forEach(menu => {
+                        menu.style.display = 'none';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
